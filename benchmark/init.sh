@@ -33,12 +33,13 @@ case "${ACTION}" in
 	mbw-complete)
 		/bench/bin/mem-test.sh "${@}"
 		;;
-	mbw-loop
+	mbw-loop)
 		COUNT="${1}"
 		shift
-		for I in {1..${COUNT}}; do
+		for (( I=1; I<=${COUNT}; I++ )); do
 			/bench/bin/mem-test.sh
 		done
+		;;
 	*)
 		die_usage
 		;;

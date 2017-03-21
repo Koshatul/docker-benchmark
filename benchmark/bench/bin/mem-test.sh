@@ -8,7 +8,7 @@ TMP="/tmp/mbw_result_tmp"
 
 echo "Starting test on $NUMCORES cores"
 for (( i=0; i<$NUMCORES; i++ )); do
-   mbw -b 4096 32 -n 100 > ${TMP}_${i} &
+   mbw -b 4096 -n 100 32 > ${TMP}_${i} &
 done
 
 echo "Waiting for tests to finish"
