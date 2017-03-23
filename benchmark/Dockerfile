@@ -23,6 +23,8 @@ RUN ( \
 RUN git clone --depth 1 https://github.com/raas/mbw.git mbw
 RUN ( cd /bench/mbw; make )
 
+VOLUME /data
+
 COPY bench /bench
 COPY init.sh /init.sh
 

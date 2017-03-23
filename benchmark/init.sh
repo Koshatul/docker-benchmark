@@ -8,6 +8,8 @@ BIN_SYSBENCH="/bench/sysbench/src/sysbench"
 
 NUMPROC="$(/usr/bin/nproc)"
 
+cd /data
+
 function die_usage() {
 	echo "usage: ${0} <action> [additional parameters]" >&2
 	echo ""
@@ -18,6 +20,7 @@ function die_usage() {
 	echo " mbw-loop <count>    - Run mem-test script in a loop <count> times"
 	exit 99
 }
+
 
 export PATH="/bench/mbw:/bench/sysbench/src:${PATH}"
 
@@ -37,8 +40,9 @@ case "${ACTION}" in
 		COUNT="${1}"
 		shift
 		for (( I=1; I<=${COUNT}; I++ )); do
-			/bench/bin/mem-test.sh
+			/bench/bin/mem-test.sh >> /tmp/mbw.output
 		done
+
 		;;
 	*)
 		die_usage
